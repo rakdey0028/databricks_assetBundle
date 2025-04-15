@@ -5,7 +5,7 @@ resources:
       tasks:
         - task_key: JobDAB
           notebook_task:
-            notebook_path: /Workspace/Shared/dab_test
+            notebook_path: /Workspace/Shared/dab_notebook
             source: WORKSPACE
       queue:
         enabled: true
