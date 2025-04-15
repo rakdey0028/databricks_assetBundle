@@ -11,7 +11,7 @@ targets:
   prod:  # Only production target
     mode: production
     workspace:
-      host: ${var.databricks_host}
+      host: ${secrets.DATABRICKS_HOST}
       root_path: /Shared/${bundle.name}
     compute:
       serverless:
