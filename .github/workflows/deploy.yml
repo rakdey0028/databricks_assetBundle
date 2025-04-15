@@ -37,7 +37,13 @@ jobs:
             CLEAN_HOST="${DATABRICKS_HOST%/}"
     
             # Configure CLI using proper argument syntax
-              databricks configure --token "$DATABRICKS_TOKEN" --host "$CLEAN_HOST" 
+              echo "Creating config file backup..."
+            mkdir -p ~/.databricks
+            cat > ~/.databrickscfg <<EOL
+            [DEFAULT]
+            host = ${DATABRICKS_HOST%/}
+            token = $DATABRICKS_TOKEN
+            EOL 
 
       - name: Validate bundle
         run: databricks bundle validate
