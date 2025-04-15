@@ -24,10 +24,7 @@ jobs:
             exit 1
           fi
       - name: Install Databricks CLI
-        run: |
-              pip install --upgrade databricks-cli databricks-assets
-              echo "DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST }}" >> $GITHUB_ENV
-              echo "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}" >> $GITHUB_ENV
+        uses: databricks/setup-cli@main
       - name: Configure Databricks CLI
         env:
             DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
