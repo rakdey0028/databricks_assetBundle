@@ -1,0 +1,44 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main  # Only trigger on pushes to main branch (after PR merge)
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: production  # Fixed production environment
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Get full commit history
+
+      - name: Verify merge commit
+        run: |
+          # Check if this is a merge commit (has two parent commits)
+          if [ "$(git show -s --format=%p HEAD | wc -w)" -ne 2 ]; then
+            echo "::error::Deployments only allowed after PR merges"
+            exit 1
+          fi
+
+      - name: Setup Databricks CLI
+        uses: databricks/setup-cli@v1
+
+      - name: Configure Databricks CLI
+        env:
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_PROD_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_PROD_TOKEN }}
+        run: |
+          databricks configure --token --host $DATABRICKS_HOST
+
+      - name: Validate bundle
+        run: databricks bundle validate
+
+      - name: Deploy to Production
+        run: databricks bundle deploy -t prod
+
+      - name: Verify deployment
+        run: databricks bundle resources -t prod
