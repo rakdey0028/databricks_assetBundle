@@ -4,7 +4,7 @@ bundle:
 include:
   - resources/*.yml
 
-variables:
+vars:
   prod: variables/prod.yml  # Only production variables
 
 targets:
