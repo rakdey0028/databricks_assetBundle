@@ -37,7 +37,7 @@ jobs:
             CLEAN_HOST="${DATABRICKS_HOST%/}"
     
             # Configure CLI using proper argument syntax
-              databricks configure --token --host "$CLEAN_HOST" 
+              databricks configure --token "$DATABRICKS_TOKEN" --host "$CLEAN_HOST" 
 
       - name: Validate bundle
         run: databricks bundle validate
