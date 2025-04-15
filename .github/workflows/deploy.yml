@@ -36,11 +36,10 @@ jobs:
             # Configure CLI using proper argument syntax
               echo "Creating config file backup..."
             mkdir -p ~/.databricks
-            cat > ~/.databrickscfg <<EOL
+            cat > ~/.databrickscfg
             [DEFAULT]
             host = ${DATABRICKS_HOST%/}
-            token = $DATABRICKS_TOKEN
-            EOL 
+            token = $DATABRICKS_TOKEN 
 
       - name: Validate bundle
         run: databricks bundle validate
