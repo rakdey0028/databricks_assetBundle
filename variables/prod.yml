@@ -1,0 +1,5 @@
+env: prod
+
+# Workspace configuration
+databricks_host: https://adb-9876543210987654.7.databricks.com
+workspace_id: 9876543210987654
