@@ -1,0 +1,11 @@
+resources:
+  jobs:
+    Workflow_DAB:
+      name: Workflow_DAB
+      tasks:
+        - task_key: JobDAB
+          notebook_task:
+            notebook_path: /Workspace/Shared/dab_notebook
+            source: WORKSPACE
+      queue:
+        enabled: true

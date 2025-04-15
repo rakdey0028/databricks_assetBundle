@@ -1,0 +1,18 @@
+bundle:
+  name: workflow_prod_bundle
+
+include:
+  - resources/*.yml
+
+variables:
+  prod: variables/prod.yml  # Only production variables
+
+targets:
+  prod:  # Only production target
+    mode: production
+    workspace:
+      host: ${var.databricks_host}
+      root_path: /Shared/${bundle.name}
+    compute:
+      serverless:
+        enabled: true

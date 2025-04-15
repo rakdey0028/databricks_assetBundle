@@ -1,0 +1,6 @@
+resources:
+  notebooks:
+    sample_notebook:
+      path: /Shared/dab_notebook  # Workspace path
+      source_path: ../notebooks/dab_notebook.py  # Local .ipynb file
+      language: PYTHON  # Language of the notebook
