@@ -26,11 +26,11 @@ jobs:
       - name: Install Databricks CLI
         run: |
               pip install databricks-cli --upgrade
-              echo "DATABRICKS_HOST=${{ vars.DATABRICKS_HOST }}" >> $GITHUB_ENV
+              echo "DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST }}" >> $GITHUB_ENV
               echo "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}" >> $GITHUB_ENV
       - name: Configure Databricks CLI
         env:
-            DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+            DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
             DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
             # Clean host URL (remove trailing slash)
