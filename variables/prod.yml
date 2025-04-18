@@ -1,0 +1,5 @@
+env: prod
+
+# Workspace configuration
+databricks_host: "https://dbc-493fe730-96bd.cloud.databricks.com"
+workspace_id: "1100609818377343"
