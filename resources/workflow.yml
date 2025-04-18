@@ -3,8 +3,8 @@ resources:
     Workflow_DAB:
       name: Workflow_DAB
       job_clusters:
-      - job_cluster_key: "single-node-cluster"
-        new_cluster:
+       - job_cluster_key: "single-node-cluster"
+         new_cluster:
           spark_version: "15.4.X-scala2.12"
           node_type_id: "m5a.large" 
           driver_node_type_id: "m5a.large"
@@ -18,5 +18,5 @@ resources:
         - task_key: "JOBDAB_task"
           job_cluster_key: "single-node-cluster"
           notebook_task:
-          notebook_path: /Workspace/Shared/dab_notebook
-            source: WORKSPACE
+           notebook_path: /Workspace/Shared/dab_notebook
+           source: WORK
