@@ -6,7 +6,7 @@ on:
       - prod_master  # Only trigger on pushes to main branch (after PR merge)
 
 jobs:
-  deploy-prod:
+  deploy-prod-master:
     runs-on: ubuntu-latest
     environment: production  # Fixed production environment
     
