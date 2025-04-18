@@ -27,8 +27,8 @@ jobs:
         uses: databricks/setup-cli@main
       - name: Configure Databricks CLI
         env:
-            DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_prod_master }}
-            DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_prod_master }}
+            DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_PROD_MASTER }}
+            DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_PROD_MASTER }}
         run: |
             # Clean host URL (remove trailing slash)
             CLEAN_HOST="${DATABRICKS_HOST%/}"
@@ -46,16 +46,16 @@ jobs:
         run: databricks bundle validate
         working-directory: .
         env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_prod_master }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_prod_master }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_PROD_MASTER }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_PROD_MASTER }}
           DATABRICKS_BUNDLE_ENV: prod
 
       - name: Deploy to Production
         run: databricks bundle deploy -t prod
         working-directory: .
         env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_prod_master }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_prod_master }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_PROD_MASTER }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_PROD_MASTER }}
           DATABRICKS_BUNDLE_ENV: prod
 
 
@@ -63,7 +63,7 @@ jobs:
         run: databricks bundle resources -t prod
         working-directory: .
         env:
-         DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_prod_master }}
-         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_prod_master }}
+         DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_PROD_MASTER }}
+         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_PROD_MASTER }}
          DATABRICKS_BUNDLE_ENV: prod
 
