@@ -2,8 +2,21 @@ resources:
   jobs:
     Workflow_DAB:
       name: Workflow_DAB
+    job_clusters:
+      - job_cluster_key: "single-node-cluster"
+        new_cluster:
+          spark_version: "15.4.X-scala2.12"  # Adjust based on your runtime
+          node_type_id: "m5a.large"    # Azure VM type (adjust as needed)
+          driver_node_type_id: "m5a.large"  # Same as node_type_id (since no workers)
+          num_workers: 0  # Only the driver node (no workers)
+          spark_conf:
+            "spark.databricks.cluster.profile": "singleNode"
+            "spark.master": "local[*]"
+          custom_tags:
+            ResourceClass: "SingleNode"
       tasks:
         - task_key: JobDAB
+          job_cluster_key: "single-node-cluster"
           notebook_task:
             notebook_path: /Workspace/Shared/dab_notebook
             source: WORKSPACE
