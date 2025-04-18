@@ -12,6 +12,7 @@ resources:
           spark_conf:
             "spark.databricks.cluster.profile": "singleNode"
             "spark.master": "local[*]"
+          enable_elastic_disk: true
           custom_tags:
             ResourceClass: "SingleNode"
       tasks:
